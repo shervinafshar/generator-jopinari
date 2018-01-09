@@ -60,14 +60,41 @@ module.exports = class extends Generator {
 
     }
 
+    configuring() {
+	this.fs.copy(
+	    this.templatePath('gitignore'),
+	    this.destinationPath('.gitignore'));
+
+	this.fs.copy(
+	    this.templatePath('editorconfig'),
+	    this.destinationPath('.editorconfig'));
+
+    }
+    
+    install() {
+	// don't conflict while replacing build.gradle with our version.
+	this.conflicter.force = true;
+	this.spawnCommandSync('gradle', ['init', '--type', 'java-application']);
+	// TODO: need to template build.gradle for main class param.
+	this.fs.copy(
+	    this.templatePath('build.gradle'),
+	    this.destinationPath('build.gradle'));
+    }
+
     writing() {
-	this.fs.copyTpl(
+	readme: this.fs.copyTpl(
 	    this.templatePath('README.md'),
 	    this.destinationPath('README.md'),
 	    { appname: this.config.get('appname'),
 	      author: this.config.get('author'),
 	      description: this.config.get('description')
 	    });
+
+	checkstyle: this.fs.copy(
+	    this.templatePath('config'),
+	    this.destinationPath('config')
+	);
+
 	}
     
 };
