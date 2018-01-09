@@ -1,0 +1,38 @@
+buildscript {
+    repositories { jcenter() }
+    dependencies {
+        classpath 'com.netflix.nebula:gradle-lint-plugin:latest.release'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'nebula.lint'
+apply plugin: 'idea'
+apply plugin: 'checkstyle'
+apply plugin: 'findbugs'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+}
+
+gradleLint {
+    rules  = ['all-dependency']
+    criticalRules = ['unused-dependency']
+}
+
+// Prevent running checkstyle and findbugs unless explicitly called.
+checkstyle {
+    sourceSets = []
+}
+
+findbugs {
+    sourceSets = []
+}
+
+// Define the main class for the application
+mainClassName = 'App'
