@@ -1,6 +1,6 @@
 {
   "name": "generator-jopinari",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "An opinionated Java project generator. Gradle, JUnit, and other goodies: Nebula + IDE (IntelliJ Idea or Eclipse) + findbugs + checkstyles.",
   "license": "GPL-3.0",
   "repository": "shervinafshar/generator-jopinari",
