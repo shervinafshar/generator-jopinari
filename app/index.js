@@ -53,6 +53,9 @@ module.exports = class extends Generator {
 	    }
 	];
 
+	// TODO: More prompt for customizations; IDE type,
+	// app or lib, Nebula or not, etc.
+
 	this.prompt(prompts).then((answers) => {
 	    this.config.set(answers);
 	    done();
@@ -72,10 +75,10 @@ module.exports = class extends Generator {
     }
     
     install() {
-	// don't conflict while replacing build.gradle with our version.
+	// don't prompt for conflict while replacing build.gradle with our version.
 	this.conflicter.force = true;
 	this.spawnCommandSync('gradle', ['init', '--type', 'java-application']);
-	// TODO: need to template build.gradle for main class param.
+	// TODO: need to template build.gradle for main class param and other configs.
 	this.fs.copy(
 	    this.templatePath('build.gradle'),
 	    this.destinationPath('build.gradle'));
