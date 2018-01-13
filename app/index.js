@@ -1,7 +1,10 @@
 'use strict';
 
 var Generator = require('yeoman-generator');
-var validator = require('validator');
+var validator = require('validator')
+  , yosay     = require('yosay')
+  , chalk     = require('chalk')
+
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -14,13 +17,17 @@ module.exports = class extends Generator {
     prompting() {
 
 	var done = this.async();
+
+	this.log(yosay(
+            chalk.blue('Welcome to Jopinari, an opinionated Java project generator!')
+      ));
 	
 	var prompts = [
 	    {
 		type: 'input',
-		name: 'appname',
-		message: 'Your application name',
-		default: this.appname,
+		name: 'projname',
+		message: 'Project name:',
+		default: this.projname,
 		validate: function (input) {
 		    return input ? true : false;
 		}
@@ -28,13 +35,13 @@ module.exports = class extends Generator {
 	    {
 		type: 'input',
 		name: 'description',
-		message: 'A summary of the application (optional)',
+		message: 'A summary of the project (optional):',
 		default: this.config.get('description') || null
 	    },
 	    {
 		type: 'input',
 		name: 'author',
-		message: 'Author\'s name?',
+		message: 'Author\'s name:',
 		default: this.config.get('author'),
 		store: true,
 		validate: function (input) {
@@ -44,7 +51,7 @@ module.exports = class extends Generator {
 	    {
 		type: 'input',
 		name: 'email',
-		message: 'Author\'s email?',
+		message: 'Author\'s email:',
 		default: this.config.get('email'),
 		store: true,
 		validate: function (input) {
@@ -88,7 +95,7 @@ module.exports = class extends Generator {
 	readme: this.fs.copyTpl(
 	    this.templatePath('README.md'),
 	    this.destinationPath('README.md'),
-	    { appname: this.config.get('appname'),
+	    { projname: this.config.get('projname'),
 	      author: this.config.get('author'),
 	      description: this.config.get('description')
 	    });

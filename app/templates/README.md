@@ -1,4 +1,4 @@
-# <%= appname %><% if (description) { %> #
+# <%= projname %><% if (description) { %> #
 
 <%= description %><% } %>
 
