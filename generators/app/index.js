@@ -1,10 +1,11 @@
 'use strict';
 
 var Generator = require('yeoman-generator');
+var Promise   = require('bluebird');
 var validator = require('validator')
   , yosay     = require('yosay')
   , chalk     = require('chalk')
-
+  , execa = require('execa');
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -14,13 +15,40 @@ module.exports = class extends Generator {
 
 module.exports = class extends Generator {
 
-    prompting() {
+    initializing() {
 
 	var done = this.async();
+	var response;
+	var gradleVersion;
 
 	this.log(yosay(
             chalk.blue('Welcome to Jopinari, an opinionated Java project generator!')
-      ));
+	));
+
+	this.log('Checking prerequisites...');
+	
+	Promise.coroutine(function *(response) {
+	    var response = yield execa('gradle', ['--version']);
+	    return yield Promise.resolve(response);
+	})(response)
+	    .catch(e =>
+		   { this.env.error(
+		       chalk.red('\u274C  Gradle not found in path!')
+		   );
+		   })
+	    .then(
+		m => {
+		    gradleVersion = m.stdout.match(/Gradle (\d+(\.\d)*)/i)[1];
+		    this.log('\u2705  Found Gradle version: ' + gradleVersion + '\n');
+		    done();
+		}
+	    );
+
+    }
+    
+    prompting() {
+
+	var done = this.async();
 	
 	var prompts = [
 	    {
@@ -105,6 +133,10 @@ module.exports = class extends Generator {
 	    this.destinationPath('config')
 	);
 
-	}
+    }
+
+    end() {
+	goodbye: this.log(chalk.blue('Goodbye!'));
+    }
     
 };
