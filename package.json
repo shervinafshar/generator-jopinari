@@ -1,14 +1,12 @@
 {
   "name": "generator-jopinari",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "An opinionated Java project generator. Gradle, JUnit, and other goodies: Nebula + IDE (IntelliJ Idea or Eclipse) + findbugs + checkstyles.",
   "license": "GPL-3.0",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/shervinafshar/generator-jopinari.git"
-  },
-  "author": "Shervin Afshar <i@shervinafshar.name> (https://github.com/shervinafshar)",
+  "repository": "shervinafshar/generator-jopinari",
+  "author": "Shervin Afshar",
   "files": [
+    "index.js",
     "generators/app"
   ],
   "keywords": [
@@ -24,9 +22,5 @@
     "url": "https://github.com/shervinafshar/generator-jopinari/issues"
   },
   "homepage": "https://github.com/shervinafshar/generator-jopinari#readme",
-  "main": "index.js",
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  }
+  "main": "index.js"
 }
