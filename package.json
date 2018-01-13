@@ -1,24 +1,32 @@
 {
-   "name": "generator-jopinari",
-   "version": "0.1.0",
-   "description": "An opinionated Java project generator. Gradle, JUnit, and other goodies: Nebula + IDE (IntelliJ Idea or Eclipse) + findbugs + checkstyles.",
-   "license": "GPL-3.0-only",
-   "repository": "shervinafshar/generator-jrasa",
-   "author": {
-      "name": "Shervin Afshar",
-      "email": "i@shervinafshar.name",
-      "url": "https://github.com/shervinafshar"
-   },
-   "files": [
-      "generators/app"
-   ],
-   "keywords": [
-      "yeoman-generator"
-   ],
-   "dependencies": {
-      "yeoman-generator": "2.0.2",
-      "validator": "9.2.0",
-      "chalk": "2.3.0",
-      "yosay": "2.0.1"
-   }
+  "name": "generator-jopinari",
+  "version": "0.1.0",
+  "description": "An opinionated Java project generator. Gradle, JUnit, and other goodies: Nebula + IDE (IntelliJ Idea or Eclipse) + findbugs + checkstyles.",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shervinafshar/generator-jopinari.git"
+  },
+  "author": "Shervin Afshar <i@shervinafshar.name> (https://github.com/shervinafshar)",
+  "files": [
+    "generators/app"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "yeoman-generator": "2.0.2",
+    "validator": "9.2.0",
+    "chalk": "2.3.0",
+    "yosay": "2.0.1"
+  },
+  "bugs": {
+    "url": "https://github.com/shervinafshar/generator-jopinari/issues"
+  },
+  "homepage": "https://github.com/shervinafshar/generator-jopinari#readme",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }
